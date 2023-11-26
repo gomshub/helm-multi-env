@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapp-argo-application
+  name: myapp-prod-application
   namespace: argocd
 spec:
   project: default
@@ -9,7 +9,11 @@ spec:
   source:
     repoURL: https://github.com/gomshub/helm-multi-env.git
     targetRevision: HEAD
-    path: 
+    path: chart/sample-app
+    helm: 
+      parameters: 
+        valuesFiles: 
+        - ./values-prod.yaml
   destination: 
     server: https://kubernetes.default.svc
     namespace: prod
@@ -18,3 +22,6 @@ spec:
     automated:
       selfHeal: true
       prune: true
+
+  
+    
