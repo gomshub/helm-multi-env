@@ -11,9 +11,8 @@ spec:
     targetRevision: HEAD
     path: chart/sample-app
     helm: 
-      parameters: 
-        valuesFiles: 
-        - values-prod.yaml
+      valueFiles: 
+      - ../values-prod.yaml
   destination: 
     server: https://kubernetes.default.svc
     namespace: prod
